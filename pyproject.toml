@@ -1,0 +1,12 @@
+[project]
+name = "sisyphus"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "faker>=40.28.1",
+    "python-dotenv>=1.2.2",
+    "rich>=15.0.0",
+    "selenium>=4.45.0",
+    "tomlkit>=0.15.0",
+    "typer>=0.26.8",
+]
