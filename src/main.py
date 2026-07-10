@@ -1,20 +1,17 @@
-from pathlib import Path
+import typer
+from core.initializer import init_project
 
 
-def resolve_project_path(name: str | None = None) -> Path:
-    """Returns the target project path.
+app = typer.Typer()
 
-    If a name is given, returns cwd/name (new subdir).
-    If no name is given, returns cwd (use current dir).
-    """
-    current_dir = Path.cwd()
-
-    if name:
-        return current_dir / name
-    else:
-        return current_dir
-
+@app.command()
+def init(name: str = typer.Argument(None)):
+    try:
+        init_project(name)
+        typer.echo(f"✓ Initialized project at {name or '.'}")
+    except FileExistsError as e:
+        typer.echo(f"● {e}", err=True)
+        raise typer.Exit(code=1)
 
 if __name__ == "__main__":
-    print(resolve_project_path())
-    print(resolve_project_path("test-project"))
+    app()
