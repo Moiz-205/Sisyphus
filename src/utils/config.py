@@ -1,0 +1,1 @@
+DOTFILE_NAME = ".sisyphus"
