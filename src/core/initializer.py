@@ -23,7 +23,7 @@ def init_project(name: str | None = None) -> Path:
 
     dotfile_path = path / DOTFILE_NAME
     if dotfile_exists(dotfile_path):
-        raise FileExistsError(f"Project already initialized at {path}")
+        raise FileExistsError(str(path))
 
     create_dotfile(path, project_name=name or path.name)
     return path

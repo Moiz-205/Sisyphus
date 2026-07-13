@@ -13,7 +13,7 @@ def assign_url(url: str) -> Path:
     path = resolve_dotfile_path()
 
     if not dotfile_exists(path):
-        raise FileNotFoundError(f"No sisyphus project found at {path.parent}")
+        raise FileNotFoundError(str(path))
 
     doc = load_dotfile(path)
     doc = update_url(doc, url)
